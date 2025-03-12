@@ -1,0 +1,94 @@
+/* ========== Default Styles (Desktop First) ========== */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eef1f7;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+.navbar ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+.navbar ul li {
+    margin-right: 25px;
+}
+.navbar ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.navbar ul li a:hover {
+    color: #ffcc00;
+}
+/* ========== Mobile (max-width: 768px) ========== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .navbar ul {
+        flex-direction: column;
+        display: none; /* Menu is turn off in mobile */
+    }
+    .menu-button {
+        display: block;
+        background-color: #ffcc00;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .menu-button:hover {
+        background-color: #e6b800;
+    }
+    
+    /* Responsive Enhancements */
+    .image_container img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .text_box {
+        text-align: center;
+    }
+}
+
+/* ========== Tablet (min-width: 769px and max-width: 1024px) ========== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 10px 20px;
+    }
+    .navbar ul li {
+        margin-right: 15px;
+    }
+    
+    /* Adjusting text sizes for readability */
+    h1, h2, h3 {
+        font-size: 90%;
+    }
+}
+
+/* ========== Small Laptop (min-width: 1025px and max-width: 1366px) ========== */
+@media (min-width: 1025px) and (max-width: 1366px) {
+    .container {
+        padding: 20px 40px;
+    }
+    .text_box {
+        font-size: 1.1rem;
+    }
+}
+
+/* ========== Large Desktop (min-width: 1367px) ========== */
+@media (min-width: 1367px) {
+    .container {
+        max-width: 1200px;
+        margin: auto;
+    }
+}

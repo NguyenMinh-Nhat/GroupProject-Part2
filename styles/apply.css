@@ -1,0 +1,215 @@
+/* Form Container */
+.form-container {
+    max-width: 900px; /* Slightly wider for a professional layout */
+    margin: 50px auto; /* Increased margin for prominence */
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Softer, professional shadow */
+    border-radius: 12px;
+    background: #ffffff; /* Clean white base */
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease; /* Subtle hover effect */
+}
+.form-container:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Form Styling with Scroll */
+.apply_form {
+    padding: 30px;
+    border-radius: 8px;
+    max-height: 700px; /* Longer form height */
+    overflow-y: auto; /* Scrollable */
+    scrollbar-width: thin;
+    scrollbar-color: #26a69a #f5f7fa; /* Teal thumb, light gray track */
+    border: 1px solid #e0e4e8; /* Subtle border */
+    background: linear-gradient(to bottom, #f9fafb, #ffffff); /* Light gradient for depth */
+}
+
+/* Custom Scrollbar for Webkit */
+.apply_form::-webkit-scrollbar {
+    width: 8px;
+}
+.apply_form::-webkit-scrollbar-track {
+    background: #f5f7fa; /* Light gray */
+    border-radius: 8px;
+}
+.apply_form::-webkit-scrollbar-thumb {
+    background: #26a69a; /* Teal */
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+.apply_form::-webkit-scrollbar-thumb:hover {
+    background: #208c82; /* Darker teal */
+}
+
+/* Form Header */
+.apply_form h2 {
+    color: #8e24aa; /* Purple */
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif; /* Clean, professional font */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #8e24aa, #26a69a); /* Gradient text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Gradient effect */
+}
+
+/* Form Fields */
+.apply_form div {
+    margin-bottom: 25px;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+.apply_form div:hover {
+    transform: translateY(-2px); /* Subtle lift for professionalism */
+}
+
+/* Labels */
+.apply_form label {
+    display: block;
+    color: #333; /* Darker for readability */
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 0.2px;
+    transition: color 0.3s ease;
+}
+.apply_form input:focus + label,
+.apply_form select:focus + label,
+.apply_form textarea:focus + label {
+    color: #26a69a; /* Teal on focus */
+}
+
+/* Inputs, Selects, and Textarea */
+.apply_form input,
+.apply_form select,
+.apply_form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d1d9e0; /* Clean border */
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #ffffff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle inset shadow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+.apply_form input:focus,
+.apply_form select:focus,
+.apply_form textarea:focus {
+    border-color: #8e24aa; /* Purple on focus */
+    box-shadow: 0 0 8px rgba(142, 36, 170, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Professional glow */
+    transform: scale(1.01); /* Slight scale for feedback */
+    outline: none;
+}
+.apply_form select {
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="%2326a69a" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 15px center;
+    padding-right: 35px; /* Space for arrow */
+}
+.apply_form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Specific Width Adjustments */
+#DateOfBirth {
+    width: 200px;
+}
+#PhoneNumber {
+    width: 250px;
+}
+#State, #Gender {
+    width: 200px;
+}
+
+/* Button */
+.apply_form button {
+    background: linear-gradient(to right, #26a69a, #348cf7); /* Gradient for professionalism */
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(177, 255, 247, 0.3); /* Teal shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.apply_form button:hover {
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 6px 20px rgba(142, 36, 170, 0.4); /* Stronger purple shadow */
+}
+.apply_form button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(142, 36, 170, 0.3);
+}
+/* Form Container */
+.form-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f3e7e9, #e3eeff); /* Soft gradient */
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+.form-container:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Background Pattern */
+.form-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/hexellence.png'); /* Subtle pattern */
+    opacity: 0.1;
+}
+
+/* Vibrant Input Fields */
+.apply_form input,
+.apply_form select,
+.apply_form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    background-color: #ffffff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    outline: none;
+}
+.apply_form input:focus,
+.apply_form select:focus,
+.apply_form textarea:focus {
+    border-color: #8e24aa;
+    box-shadow: 0 0 10px rgba(142, 36, 170, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transform: scale(1.02);
+}
+
+/* Gradient Border Effect */
+.apply_form input,
+.apply_form select,
+.apply_form textarea {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, #bbe7f7, #b0bbba) border-box;
+    border: 2px solid transparent;
+}

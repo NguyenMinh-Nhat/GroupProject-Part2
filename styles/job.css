@@ -1,0 +1,73 @@
+/* styles/job.css */
+.job-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.job-table:hover {
+    transform: scale(1.01); /* Slight zoom on hover */
+}
+
+.job-table th {
+    background: linear-gradient(45deg, #ff4757, #1e90ff); /* Bold gradient */
+    color: white;
+    font-size: 1.4rem;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.job-table td {
+    padding: 1.2rem;
+    font-size: 1rem;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+.job-table td:first-child {
+    font-weight: 600;
+    color: #ff6b81; /* Pinkish-red for labels */
+    width: 25%;
+    background: #f9f9f9;
+    border-right: 2px dashed #1e90ff;
+}
+
+.job-table tr:nth-child(even) td {
+    background: #f1f2f6; /* Light gray for alternating rows */
+}
+
+.job-table ul {
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.job-table ul li {
+    margin: 0.5rem 0;
+    position: relative;
+}
+
+.job-table ul li::before {
+    content: '➤';
+    color: #ff4757;
+    position: absolute;
+    left: -1.5rem;
+}
+
+.job-table a {
+    color: #1e90ff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.job-table a:hover {
+    color: #ff4757;
+    text-decoration: underline wavy;
+}
+
