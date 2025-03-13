@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link href="styles/styles.css" rel="stylesheet">x`
+    <link href="styles/styles.css" rel="stylesheet">
     <link href="styles/about.css" rel="stylesheet">
     <link href ="styles/responsive.css" rel="stylesheet" >
+    <link rel="stylesheet" href="styles/menu.css">
     
 </head>
 

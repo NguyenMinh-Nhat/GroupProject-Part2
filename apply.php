@@ -7,6 +7,7 @@
     <link href = "styles/responsive.css" rel = "stylesheet" >
     <title>Apply Position</title>
     <link href="styles/apply.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/menu.css">
 </head>
 
 <body>
@@ -16,32 +17,39 @@
 ?>
 <div class = "form-container">
 
-    <form action="process_eoi.php" method="POST" class="apply_form">
+    <form action="process_eoi.php" method="POST" class="apply_form" novalidate>
         <h2>Registration Form</h2>
+        <div>
+            <label for="job_reference">Job Application: </label>
+            <input type="text" placeholder="J0000" id="job_reference" name="job_reference" maxlength="5" required>
+        </div>
 
         <div>
             <label for="FirstName">First Name:</label>
-            <input type="text" placeholder="Nguyen Van A" id="FirstName" name="FirstName" maxlength="20" required>
+            <input type="text" placeholder="Nguyen Van A" id="first_name" name="first_name" maxlength="20" required>
         </div>
 
         <div>
-            <label for="LastName">Last Name:</label>
-            <input type="text" placeholder="Nhập họ của bạn" id="LastName" name="LastName" maxlength="20" required>
+            <label for="last_name">Last Name:</label>
+            <input type="text" placeholder="Nhập họ của bạn" id="last_name" name="last_name" maxlength="20" required>
         </div>
 
         <div id="dob-div">
-            <label for="DateOfBirth">Date of Birth:</label>
-            <input type="date" id="DateOfBirth" name="DateOfBirth" required>
+            <label for="date_of_birth">Date of Birth:</label>
+            <input type="date" id="date_of_birth" name="date_of_birth" required>
+        </div>
+        <div>
+            <label for="street_address">Street Address:</label>
+            <input type="text" placeholder="Quận/Huyện/Xã" id="street_address" name="street_address" maxlength="40" required>
+        </div>
+        <div>
+            <label for="suburb">Suburb:</label>
+            <input type="text" placeholder="Quận/Huyện/Xã" id="suburb" name="suburb" maxlength="40" required>
         </div>
 
         <div>
-            <label for="Suburb">Suburb:</label>
-            <input type="text" placeholder="Quận/Huyện/Xã" id="Suburb" name="Suburb" maxlength="40" required>
-        </div>
-
-        <div>
-            <label for="State">State:</label>
-            <select id="State" name="State" required>
+            <label for="state">State:</label>
+            <select id="state" name="state" required>
                 <option value="">Select State</option>
                 <option value="VIC">VIC</option>
                 <option value="NSW">NSW</option>
@@ -55,27 +63,26 @@
         </div>
 
         <div>
-            <label for="Postcode">Postcode:</label>
-            <input type="text" id="Postcode" name="Postcode" pattern="\d{4}" maxlength="4" title="Postcode must be exactly 4 digits" placeholder="Mã bưu chính" required>
+            <label for="postcode">Postcode:</label>
+            <input type="text" id="postcode" name="postcode" pattern="\d{4}" maxlength="4" title="Postcode must be exactly 4 digits" placeholder="Mã bưu chính" required>
         </div>
 
         <div>
-            <label for="Email">Email Address:</label>
-            <input type="email" id="Email" name="Email" placeholder="Nhập email của bạn" required>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+        </div>
+        <div>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" pattern="[\d\s]{8,12}" title="Enter a valid phone number with 8 to 12 digits, spaces allowed." placeholder="Số điện thoại" required>
         </div>
 
         <div>
-            <label for="PhoneNumber">Phone Number:</label>
-            <input type="text" id="PhoneNumber" name="PhoneNumber" pattern="[\d\s]{8,12}" title="Enter a valid phone number with 8 to 12 digits, spaces allowed." placeholder="Số điện thoại" required>
-        </div>
-
-        <div>
-            <label for="Gender">Gender:</label>
-            <select id="Gender" name="Gender" required>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
                 <option value="">Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
             </select>
         </div>
 
@@ -85,8 +92,8 @@
         </div>
 
         <div>
-            <label for="OtherSkill">Other Skill:</label>
-            <input type="text" id="OtherSkill" name="OtherSkill" required>
+            <label for="other_skills">Other Skill:</label>
+            <input type="text" id="other_skills" name="other_skills" required>
         </div>
 
         <div class="Message-div">

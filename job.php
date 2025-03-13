@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="styles/responsive.css">
         <link rel="stylesheet" href="styles/job.css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles/menu.css">
     </head>
 <body>
 <?php 
@@ -117,7 +117,7 @@
         </tr>
         <tr>
             <td><strong>Apply</strong></td>
-            <td><a href="https://career.vng.com.vn/en/job-search/detail/5651-senior-frontend-engineer-digital-business">Source</a></td>
+            <td><strong><a href="apply.php">Click Here</a></strong></td>
         </tr>
     </table>
 </section>
@@ -186,7 +186,7 @@
         </tr>
         <tr>
             <td><strong>Apply</strong></td>
-            <td><a href="https://career.vng.com.vn/en/job-search/detail/5655-software-engineer-reactjs-digital-business">Source</a></td>
+            <td><a href="apply.php">Click Here</a></td>
         </tr>
     </table>
 </section>

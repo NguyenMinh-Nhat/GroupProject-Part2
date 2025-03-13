@@ -6,7 +6,7 @@
     <title>Homepage</title>
     <link href = "styles/styles.css" rel = "stylesheet" />
     <link href = "styles/responsive.css" rel = "stylesheet" />
-    
+    <link href = "styles/menu.css" rel = "stylesheet" />
 </head>
 <body>
     <?php 
@@ -20,7 +20,7 @@
             <div class="text_box">
                 <a href = "https://youtu.be/kQ5BEWV8yno" class="text_box_1"> VNG CORPORATION</a> 
                 <a href = "https://youtu.be/kQ5BEWV8yno" class="icon_arrow"> ➔</a>
-                <a href = "enhancement.html" class="enhancement-web">Our Future</a>
+                <a href = "enhancement.php" class="enhancement-web">Our Future</a>
             </div>
             <img src="styles/images/BANNER-01.png" alt="VNG Games" class="image_banner" />
         </div>

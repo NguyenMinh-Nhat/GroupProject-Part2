@@ -9,25 +9,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 20px 40px;
 }
-.navbar ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-}
-.navbar ul li {
-    margin-right: 25px;
-}
-.navbar ul li a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-.navbar ul li a:hover {
-    color: #ffcc00;
-}
+
+
 /* ========== Mobile (max-width: 768px) ========== */
 @media (max-width: 768px) {
     .container {
@@ -38,17 +23,39 @@ body {
         flex-direction: column;
         display: none; /* Menu is turn off in mobile */
     }
-    .menu-button {
-        display: block;
-        background-color: #ffcc00;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
+    
+    nav {
+        padding: 0.8rem 0;
+        text-align: top;
+        object-position: 0%;
     }
-    .menu-button:hover {
-        background-color: #e6b800;
+    ul {
+        font-size: 10px;
+    }
+    nav ul {
+        flex-direction: column;
+        padding: 1rem 0;
+        max-height: 170px;
+        
     }
     
+    nav ul li {
+        margin: 0.7rem 0;
+    }
+    
+    nav ul li a {
+        padding: 0.7rem 1.5rem;
+        font-size: 30%;
+        
+    }
+    
+    nav ul li a:hover {
+        transform: scale(0.5); /* Smaller scale on mobile */
+    }
+    
+    nav ul li a:active {
+        transform: scale(0.95);
+    }
     /* Responsive Enhancements */
     .image_container img {
         width: 100%;
@@ -73,6 +80,10 @@ body {
     h1, h2, h3 {
         font-size: 90%;
     }
+    .nav {
+        font-size: medium;
+        height: 30%;
+    }
 }
 
 /* ========== Small Laptop (min-width: 1025px and max-width: 1366px) ========== */
@@ -89,6 +100,7 @@ body {
 @media (min-width: 1367px) {
     .container {
         max-width: 1200px;
-        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
