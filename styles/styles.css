@@ -17,49 +17,21 @@ footer {
     box-sizing: border-box !important;
 }
 
-header {
-    background-color: white;
-    color: #f7d464;
-    text-align: center;
-    padding: 10px;
-    margin: 5px;
-    height: 70px;
-}
 
 /* styles.css */
 
 /* Core navigation styles */
     
 
-
 .vngimage {
-    width: 5em; /* Adjust the width as needed */
+    width: 70%; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
-    position: absolute;
-    right: 0;
-    place-self: right;
+    
 }
 
 #logo_text {
-    text-align: center;
-    margin: auto;
-    width: 100%;
-    display:flex;
-    justify-content: center;
-    position:relative;
+    width:5%;
 }
-
-.container {
-    width: 80%;
-    margin: 40px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display:flex;
-    text-align: center;
-}
-
 
 
 .h2index {
@@ -75,10 +47,7 @@ header {
     z-index: 10;
 }
 
-.image_container {
-    position:relative;
-    display:inline-block;
-}
+
 
 .text_box {
     position: absolute;

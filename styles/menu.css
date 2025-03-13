@@ -1,6 +1,3 @@
-/* styles.css */
-
-/* Core navigation styles */
 nav {
     background: rgba(255, 255, 255, 0.9); /* More opaque white for better contrast */
     backdrop-filter: blur(8px); /* Slightly less blur for clarity */
@@ -10,8 +7,12 @@ nav {
     z-index: 1000;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle dark border */
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    display:flex;
+    justify-content: space-between;
 }
-
+.menu_container {
+    margin:0 auto;
+}
 nav ul {
     list-style: none;
     margin: 0;

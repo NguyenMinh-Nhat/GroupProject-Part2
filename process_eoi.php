@@ -1,7 +1,7 @@
 <?php
 require_once "settings.php";
 // Connect to MySQL
-$conn = @mysqli_connect("$host","$user","$pwd","$sql_db");
+$conn = @mysqli_connect($host,$user,$pwd,$sql_db);
 
 // Check connection
 
@@ -12,7 +12,7 @@ if ($conn) {
 }
 // Clean data
 
-if ($conn) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
     $job_reference  = trim($_POST['job_reference']  );
     $first_name     = trim($_POST['first_name']  );
     $last_name      = trim($_POST['last_name'] );
@@ -41,10 +41,10 @@ if ($conn) {
                 echo "<p class='ok'>Successfully sent job</p>";
             }
             mysqli_close($conn);
-        }
-
+        } 
+    
 
     // Close connection
     
-}
+}  
 ?>

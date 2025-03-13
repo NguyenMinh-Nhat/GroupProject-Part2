@@ -1,6 +1,6 @@
 /* Form Container */
 .form-container {
-    max-width: 900px; /* Slightly wider for a professional layout */
+    max-width: 1000px; /* Slightly wider for a professional layout */
     margin: 50px auto; /* Increased margin for prominence */
     padding: 30px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Softer, professional shadow */
@@ -14,6 +14,9 @@
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
+#job_reference, #first_name, #last_name, #date_of_birth, #gender, #street_address, #suburb, #postcode, #email {
+    width: 70%;
+}
 /* Form Styling with Scroll */
 .apply_form {
     padding: 30px;
@@ -90,7 +93,7 @@
 .apply_form input,
 .apply_form select,
 .apply_form textarea {
-    width: 100%;
+    max-width: 80%;
     padding: 12px 15px;
     border: 1px solid #d1d9e0; /* Clean border */
     border-radius: 6px;
@@ -185,7 +188,7 @@
 .apply_form input,
 .apply_form select,
 .apply_form textarea {
-    width: 100%;
+    max-width: 80%;
     padding: 12px 15px;
     border: 1px solid transparent;
     border-radius: 6px;
