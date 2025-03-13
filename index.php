@@ -7,6 +7,7 @@
     <link href = "styles/styles.css" rel = "stylesheet" />
     <link href = "styles/responsive.css" rel = "stylesheet" />
     <link href = "styles/menu.css" rel = "stylesheet" />
+    <link href = "styles/footer.css" rel = "stylesheet" />
 </head>
 <body>
     <?php 

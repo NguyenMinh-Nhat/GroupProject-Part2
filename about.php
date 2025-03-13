@@ -8,6 +8,7 @@
     <link href="styles/about.css" rel="stylesheet">
     <link href ="styles/responsive.css" rel="stylesheet" >
     <link rel="stylesheet" href="styles/menu.css">
+    <link href = "styles/footer.css" rel = "stylesheet" />
     
 </head>
 

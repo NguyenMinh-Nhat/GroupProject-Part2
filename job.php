@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="styles/responsive.css">
         <link rel="stylesheet" href="styles/job.css">
         <link rel="stylesheet" href="styles/menu.css">
+        <link href = "styles/footer.css" rel = "stylesheet" />
     </head>
 <body>
 <?php 

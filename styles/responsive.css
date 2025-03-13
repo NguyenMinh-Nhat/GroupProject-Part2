@@ -57,10 +57,7 @@ body {
         transform: scale(0.95);
     }
     /* Responsive Enhancements */
-    .image_container img {
-        width: 100%;
-        height: auto;
-    }
+    
     
     .text_box {
         text-align: center;
