@@ -1,0 +1,160 @@
+
+/* New Login Page Styles */
+.login-page {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(145deg, #d3d3d3, #686869); /* Dark gradient background */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Login wrapper */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    z-index: 2;
+    place-self: center;
+}
+
+/* Login box with neon glow */
+.login-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    animation: boxGlow 2s ease-in-out infinite alternate;
+}
+
+/* Glowing border animation */
+@keyframes boxGlow {
+    0% { box-shadow: 0 0 20px rgba(255, 98, 0, 0.3), 0 0 40px rgba(255, 98, 0, 0.1); }
+    100% { box-shadow: 0 0 30px rgba(255, 98, 0, 0.5), 0 0 60px rgba(255, 98, 0, 0.2); }
+}
+
+/* Form heading */
+.login-box h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 30px;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Input fields */
+.input-field {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.input-field input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Glowing underline effect */
+.input-field .input-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff6200, #ff9f43);
+    transition: width 0.3s ease;
+}
+
+.input-field input:focus + .input-glow {
+    width: 100%;
+}
+
+/* Placeholder styling */
+.input-field input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Login button */
+.login-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(90deg, #ff6200, #ff9f43);
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Button shine effect */
+.login-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.login-button:hover::before {
+    left: 100%;
+}
+
+/* Button hover and click effects */
+.login-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 98, 0, 0.5);
+}
+
+.login-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 0 10px rgba(255, 98, 0, 0.3);
+}
+
+/* Sign-up prompt */
+.signup-prompt {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.signup-prompt a {
+    color: #ff6200;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.signup-prompt a:hover {
+    color: #ff9f43;
+}

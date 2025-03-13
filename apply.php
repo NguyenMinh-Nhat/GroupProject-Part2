@@ -8,6 +8,7 @@
     <title>Apply Position</title>
     <link href="styles/apply.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/menu.css">
+    <link href = "styles/footer.css" rel = "stylesheet" />
 </head>
 
 <body>

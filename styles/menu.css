@@ -13,6 +13,16 @@ nav {
 .menu_container {
     margin:0 auto;
 }
+.vngimage {
+    width: 60%; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    
+}
+
+#logo_text {
+    width:5%;
+}
+
 nav ul {
     list-style: none;
     margin: 0;
@@ -20,7 +30,6 @@ nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 1200px;
     margin: 0 auto;
 }
 
