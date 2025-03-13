@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="styles/responsive.css">
         <link rel="stylesheet" href="styles/job.css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles/menu.css">
     </head>
 <body>
 <?php 

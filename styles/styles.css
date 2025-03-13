@@ -26,62 +26,10 @@ header {
     height: 70px;
 }
 
-nav {
-    text-align: center;
-    background-color: #333;
-    height: 50px;
-    max-width: 100%;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-nav a:hover {
-    color: #f4a261;
-    transform: scale(1.1);
+/* styles.css */
 
-}
-
-nav a:hover::after {
-    width: 100%;
-    left: 0;
-}
-nav a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -5px;
-    width: 0;
-    height: 3px;
-    background-color: #f4a261;
-    transition: width 0.3s ease, left 0.3s ease;
-}
-ul {
-    list-style: none;
-    padding-top: 0.5%;
-}
-
-ul li {
-    padding: 5px 0;
-    position: relative;
-}
-
-nav ul li {
-    display: inline;
-    margin:0 20px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    font-size: large;
+/* Core navigation styles */
     
-}
-
-nav ul {
-    justify-content: center;
-    align-items: center;
-    margin:auto;
-}
 
 
 .vngimage {
@@ -89,6 +37,7 @@ nav ul {
     height: auto; /* Maintain aspect ratio */
     position: absolute;
     right: 0;
+    place-self: right;
 }
 
 #logo_text {
@@ -168,6 +117,7 @@ nav ul {
     transition: all 0.3s ease-in-out;
 }
 
+
 a.icon_arrow:active {
     transform: scale(0.5);
     box-shadow: 0 2px 5px rgba(0,0,0, 0.2);
@@ -196,6 +146,8 @@ a.enhancement-web:hover {
     transform: translateY(-10px);
     transition: transform 0.3s ease;
 }
+
+
 
 
 /*----- end of index  ---------------*/
