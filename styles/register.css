@@ -1,0 +1,132 @@
+/* styles.css */
+body {
+    margin:0;
+    padding:0;
+    background: linear-gradient(135deg, #6d6d6d, #a3a3a3); /* Gradient background matching the image */
+    font-family: 'Arial', sans-serif;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Glass effect */
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    height: 400px;
+    width: 350px; /* Adjusted to match the image width */
+    border: 1px solid rgba(255, 165, 0, 0.3); /* Orange border to match the theme */
+    animation: fadeIn 1s ease-out forwards; /* Fade-in animation */
+    opacity: 0;
+    place-self: center;
+    margin-top: 10%;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.login-card h2 {
+    color: #ff8c00;
+    margin-bottom: 25px;
+    font-size: 22px; /* Slightly smaller to match the image */
+    font-weight: bold;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.login-card label {
+    display: block;
+    text-align: left;
+    color: #ccc;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.login-card input[type="text"],
+.login-card input[type="password"],
+.login-card input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.login-card input[type="text"]::placeholder,
+.login-card input[type="password"]::placeholder,
+.login-card input[type="email"]::placeholder {
+    color: #bbb; /* Placeholder color to match the image */
+}
+
+.login-card input[type="text"]:focus,
+.login-card input[type="password"]:focus,
+.login-card input[type="email"]:focus {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+    box-shadow: 0 0 5px rgba(255, 98, 0, 0.5);
+}
+
+.login-card input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #ff6200, #ff8c00); /* Exact orange gradient from the image */
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.login-card input[type="submit"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 98, 0, 0.7);
+    opacity: 0.9;
+}
+
+.login-card a {
+    display: block;
+    margin-top: 15px;
+    color: #ff6200;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.login-card a:hover {
+    color: #ff8c00;
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+    margin-bottom: 15px;
+    font-size: 14px;
+    animation: fadeInError 0.5s ease-out forwards;
+}
+
+@keyframes fadeInError {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
