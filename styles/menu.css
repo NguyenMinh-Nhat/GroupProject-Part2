@@ -14,15 +14,26 @@ nav {
     margin:0 auto;
 }
 .vngimage {
-    width: 60%; /* Adjust the width as needed */
+    width: 20%; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
-    
-}
 
+}
+.login_container {
+    width: 10%;
+}
 #logo_text {
-    width:5%;
+    width:12%;
+    height:5%;
+    display:flex;
+    justify-content: space-around;
+    text-align: center;
 }
 
+.login_welcome {
+    width:0%;
+    padding: 0;
+    margin:0;
+}
 nav ul {
     list-style: none;
     margin: 0;

@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 <!-- login.php -->
 <!DOCTYPE html>
 <html lang="en">
@@ -28,10 +35,12 @@
                     <span class="input-glow"></span>
                 </div>
                 <button type="submit" class="login-button">Sign In</button>
-                <p class="signup-prompt">New to VNG Games? <a href="signup.php">Create an Account</a></p>
+                <p class="signup-prompt">New to VNG Games? <a href="phpenhancement1.php">Create an Account</a></p>
             </form>
         </div>
     </div>
 </div>
 </body>
 </html>
+
+
