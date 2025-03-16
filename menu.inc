@@ -24,7 +24,7 @@
             <?php
                 // Check if username exists in session
                 if(isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-                    echo "<p>Welcome " . htmlspecialchars($_SESSION['username']) ."</p>";
+                    echo "<p>Welcome, " . htmlspecialchars($_SESSION['username']) ."</p>";
                 } else {
                     echo "<p>Welcome, Guest</p>";
                 }
@@ -36,10 +36,18 @@
             <li><a href="about.php">About</a></li>
             <li><a href="job.php">Career</a></li>
             <li><a href="apply.php">Apply</a></li>
+            <?php 
+
+            if(isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+                if ($_SESSION['username'] =="admin") {
+                        echo "<li><a href='manage.php'>Manager</a></li>";
+            }
+            }
+            ?>
         </ul>
     </div>
     <div class = "login_container">
-        <nav class = "login_welcome">
+
             <ul>
                     <?php
                     // Check if username exists in session
@@ -50,7 +58,7 @@
                     }
                     ?>
             </ul>
-        </nav>
+
     </div>
 
 </nav>

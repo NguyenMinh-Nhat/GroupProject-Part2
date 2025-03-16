@@ -27,6 +27,10 @@
     scrollbar-color: #26a69a #f5f7fa; /* Teal thumb, light gray track */
     border: 1px solid #e0e4e8; /* Subtle border */
     background: linear-gradient(to bottom, #f9fafb, #ffffff); /* Light gradient for depth */
+    text-align: center;
+    justify-content: center;
+    align-self: center;
+    display:flex;
 }
 
 /* Custom Scrollbar for Webkit */

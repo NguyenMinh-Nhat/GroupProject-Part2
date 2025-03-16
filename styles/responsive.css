@@ -91,6 +91,10 @@ body {
     .text_box {
         font-size: 1.1rem;
     }
+    .nav {
+        font-size: small;
+        height: 20%;
+    }
 }
 
 /* ========== Large Desktop (min-width: 1367px) ========== */
