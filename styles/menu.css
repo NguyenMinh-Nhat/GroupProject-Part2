@@ -9,6 +9,7 @@ nav {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     display:flex;
     justify-content: space-between;
+    width: 100%;
 }
 .menu_container {
     margin:0 auto;
@@ -16,10 +17,13 @@ nav {
 .vngimage {
     width: 20%; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
-
+    background: rgba(255, 255, 255, 0.9); /* More opaque white for better contrast */
+    backdrop-filter: blur(15px); /* Slightly less blur for clarity */
+    
 }
-.login_container {
-    width: 10%;
+.login_welcome nav li {
+    display:flex;
+    text-align: center;
 }
 #logo_text {
     width:12%;
@@ -29,11 +33,7 @@ nav {
     text-align: center;
 }
 
-.login_welcome {
-    width:0%;
-    padding: 0;
-    margin:0;
-}
+
 nav ul {
     list-style: none;
     margin: 0;

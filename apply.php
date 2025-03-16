@@ -26,7 +26,7 @@
         </div>
 
         <div>
-            <label for="FirstName">First Name:</label>
+            <label for="first_name">First Name:</label>
             <input type="text" placeholder="Nguyen Van A" id="first_name" name="first_name" maxlength="20" required>
         </div>
 
