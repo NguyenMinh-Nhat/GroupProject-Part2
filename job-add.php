@@ -1,6 +1,6 @@
 <?php
 require_once "settings.php";
-
+session_start();
 // Connect to MySQL
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 

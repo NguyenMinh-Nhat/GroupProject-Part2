@@ -1,4 +1,5 @@
 <?php
+
 // Start session only if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -114,6 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_status'])) {
         </form>
 
         <?php
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['update_status'])) {
             $sql = "SELECT * FROM eoi WHERE 1=1";
             $conditions = [];
@@ -156,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_status'])) {
             }
 
             $result = mysqli_query($conn, $sql);
-
+            
             if ($result && mysqli_num_rows($result) > 0) {
                 echo "<h3>Search Results:</h3>";
                 echo "<table>";
