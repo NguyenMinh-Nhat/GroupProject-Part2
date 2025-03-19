@@ -2,7 +2,7 @@
     require_once('settings.php');
     require_once('process_login.php');
 
-
+        
         // Check for logout request
         if(isset($_GET['logout'])) {
             // Unset all session variables

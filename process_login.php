@@ -1,8 +1,9 @@
 <?php
+
+include "settings.php";
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include "settings.php";
 $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 function process_login($conn, $username, $password) {
     $username = mysqli_real_escape_string($conn, $username);
