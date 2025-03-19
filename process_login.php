@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include "settings.php";
 $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 function process_login($conn, $username, $password) {
@@ -37,10 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 ?>
-
-
-
-
 
 
 

@@ -1,31 +1,39 @@
+<?php
+// Start session only if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-<?php // authorize user
-// Start session
-session_start();
-
-// Include database settings (assuming this connects to the database)
 require_once('settings.php');
 
-// Check if the user is logged in
+// Initialize database connection
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
 if (!isset($_SESSION["username"])) {
-  // If not logged in, redirect to login page
-  header("Location: phpenhancement.php");
-  exit();
+    header("Location: phpenhancement.php");
+    exit();
+}
 
-} 
-
-
-// Check if the username is admin
 if ($_SESSION["username"] !== "admin") {
-  // If not admin, deny access and redirect to index.php
-  echo "You are not authorized to access this page.";
-  header("Location: index.php");
-  exit();
+    echo "You are not authorized to access this page.";
+    header("Location: index.php");
+    exit();
+}
 
-}   
-
-// If we reach here, the user is admin, so render the page
-
+// Handle status update
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_status'])) {
+    $eoinum = mysqli_real_escape_string($conn, $_POST['eoinum']);
+    $new_status = mysqli_real_escape_string($conn, $_POST['status']);
+    $update_sql = "UPDATE eoi SET status = '$new_status' WHERE eoinum = '$eoinum'";
+    if (mysqli_query($conn, $update_sql)) {
+        echo "<p class='success'>Status updated successfully!</p>";
+    } else {
+        echo "<p class='error'>Error updating status: " . mysqli_error($conn) . "</p>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,27 +47,11 @@ if ($_SESSION["username"] !== "admin") {
     <link rel="stylesheet" href="styles/menu.css">
 </head>
 <body>
-    <!-- Subtle Wave Background -->
     <div class="wave-bg"></div>
-    
     <?php include 'menu.inc'; ?>
 
     <div class="hero">
         <h1>Welcome to HR Manager Dashboard</h1>
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
     </div>
 
     <div class="container">
@@ -107,15 +99,6 @@ if ($_SESSION["username"] !== "admin") {
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="status">Status:</label>
-                    <select name="status" id="status">
-                        <option value="">Any</option>
-                        <option value="New">New</option>
-                        <option value="Current">Current</option>
-                        <option value="Final">Final</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="text" name="email" id="email" placeholder="Enter Email">
                 </div>
@@ -130,143 +113,98 @@ if ($_SESSION["username"] !== "admin") {
             </div>
         </form>
 
-<?php
-    require_once 'settings.php';
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Start building the SQL query
-    $sql = "SELECT * FROM eoi WHERE 1=1"; // Base query, "1=1" simplifies adding conditions
-    $conditions = [];
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['update_status'])) {
+            $sql = "SELECT * FROM eoi WHERE 1=1";
+            $conditions = [];
 
-    // Add conditions for each field if provided
-    if (!empty($_POST["eoinum"])) {
-      $eoinum = mysqli_real_escape_string($conn, $_POST["eoinum"]);
-      $conditions[] = "eoinum = '$eoinum'"; // Exact match for numeric ID
-    }
+            if (!empty($_POST["eoinum"])) {
+                $eoinum = mysqli_real_escape_string($conn, $_POST["eoinum"]);
+                $conditions[] = "eoinum = '$eoinum'";
+            }
+            if (!empty($_POST["job_reference"])) {
+                $job_reference = mysqli_real_escape_string($conn, $_POST["job_reference"]);
+                $conditions[] = "job_reference LIKE '%$job_reference%'";
+            }
+            if (!empty($_POST["first_name"])) {
+                $first_name = mysqli_real_escape_string($conn, $_POST["first_name"]);
+                $conditions[] = "first_name LIKE '%$first_name%'";
+            }
+            if (!empty($_POST["last_name"])) {
+                $last_name = mysqli_real_escape_string($conn, $_POST["last_name"]);
+                $conditions[] = "last_name LIKE '%$last_name%'";
+            }
+            if (!empty($_POST["gender"])) {
+                $gender = mysqli_real_escape_string($conn, $_POST["gender"]);
+                $conditions[] = "gender = '$gender'";
+            }
+            if (!empty($_POST["state"])) {
+                $state = mysqli_real_escape_string($conn, $_POST["state"]);
+                $conditions[] = "state = '$state'";
+            }
+            if (!empty($_POST["email"])) {
+                $email = mysqli_real_escape_string($conn, $_POST["email"]);
+                $conditions[] = "email LIKE '%$email%'";
+            }
+            if (!empty($_POST["phone"])) {
+                $phone = mysqli_real_escape_string($conn, $_POST["phone"]);
+                $conditions[] = "phone LIKE '%$phone%'";
+            }
 
-    if (!empty($_POST["job_reference"])) {
-      $job_reference = mysqli_real_escape_string($conn, $_POST["job_reference"]);
-      $conditions[] = "job_reference LIKE '%$job_reference%'"; // Partial match
-    }
+            if (!empty($conditions)) {
+                $sql .= " AND " . implode(" AND ", $conditions);
+            }
 
-    if (!empty($_POST["first_name"])) {
-      $first_name = mysqli_real_escape_string($conn, $_POST["first_name"]);
-      $conditions[] = "first_name LIKE '%$first_name%'"; // Partial match
-    }
+            $result = mysqli_query($conn, $sql);
 
-    if (!empty($_POST["last_name"])) {
-      $last_name = mysqli_real_escape_string($conn, $_POST["last_name"]);
-      $conditions[] = "last_name LIKE '%$last_name%'"; // Partial match
-    }
+            if ($result && mysqli_num_rows($result) > 0) {
+                echo "<h3>Search Results:</h3>";
+                echo "<table>";
+                echo "<tr>
+                        <th>EOI Number</th>
+                        <th>Job Reference</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Gender</th>
+                        <th>State</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Edit Status</th>
+                      </tr>";
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($row["eoinum"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["job_reference"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["first_name"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["last_name"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["gender"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["state"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["email"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["phone"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["status"]) . "</td>";
+                    echo "<td>";
+                    echo "<form method='POST' action='manage.php'>";
+                    echo "<input type='hidden' name='eoinum' value='" . htmlspecialchars($row["eoinum"]) . "'>";
+                    echo "<select name='status'>";
+                    echo "<option value='New'" . ($row["status"] == "New" ? " selected" : "") . ">New</option>";
+                    echo "<option value='Hired'" . ($row["status"] == "Hired" ? " selected" : "") . ">Hired</option>";
+                    echo "<option value='Rejected'" . ($row["status"] == "Rejected" ? " selected" : "") . ">Rejected</option>";
+                    echo "</select>";
+                    echo "<input type='submit' name='update_status' value='Update'>";
+                    echo "</form>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "<p>No results found.</p>";
+            }
 
-    if (!empty($_POST["gender"])) {
-      $gender = mysqli_real_escape_string($conn, $_POST["gender"]);
-      $conditions[] = "gender = '$gender'"; // Exact match for enum
-    }
-
-    if (!empty($_POST["state"])) {
-      $state = mysqli_real_escape_string($conn, $_POST["state"]);
-      $conditions[] = "state = '$state'"; // Exact match for enum
-    }
-
-    if (!empty($_POST["status"])) {
-      $status = mysqli_real_escape_string($conn, $_POST["status"]);
-      $conditions[] = "status = '$status'"; // Exact match for enum
-    }
-
-    if (!empty($_POST["email"])) {
-      $email = mysqli_real_escape_string($conn, $_POST["email"]);
-      $conditions[] = "email LIKE '%$email%'"; // Partial match
-    }
-
-    if (!empty($_POST["phone"])) {
-      $phone = mysqli_real_escape_string($conn, $_POST["phone"]);
-      $conditions[] = "phone LIKE '%$phone%'"; // Partial match
-    }
-
-    // Add conditions to the query if any exist
-    if (!empty($conditions)) {
-      $sql .= " AND " . implode(" AND ", $conditions);
-    }
-
-    // Execute the query
-    $result = mysqli_query($conn, $sql);
-
-    if ($result && mysqli_num_rows($result) > 0) {
-      echo "<h3>Search Results:</h3>";
-      echo "<table>";
-      echo "<tr>
-              <th>EOI Number</th>
-              <th>Job Reference</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Gender</th>
-              <th>State</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Status</th>
-            </tr>";
-      while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
-        echo "<td>" . htmlspecialchars($row["eoinum"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["job_reference"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["first_name"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["last_name"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["gender"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["state"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["email"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["phone"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["status"]) . "</td>";
-        echo "</tr>";
-      }
-      echo "</table>";
-    } else {
-      echo "<p>No results found.</p>";
-    }
-
-    // Clean up
-    mysqli_free_result($result);
-    mysqli_close($conn);
-}
-  ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <!-- Sample Table (Placeholder for Data) -->
+            mysqli_free_result($result);
+        }
+        mysqli_close($conn);
+        ?>
+    </div>
+</body>
+</html>
