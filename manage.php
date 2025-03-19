@@ -11,7 +11,7 @@ if (!isset($_SESSION["username"])) {
   // If not logged in, redirect to login page
   header("Location: phpenhancement.php");
   exit();
-session_destroy();
+
 } 
 
 
@@ -21,7 +21,7 @@ if ($_SESSION["username"] !== "admin") {
   echo "You are not authorized to access this page.";
   header("Location: index.php");
   exit();
-session_destroy();
+
 }   
 
 // If we reach here, the user is admin, so render the page
@@ -51,7 +51,7 @@ session_destroy();
 
 
 
-
+    
 
 
 
@@ -201,9 +201,9 @@ session_destroy();
               <th>Last Name</th>
               <th>Gender</th>
               <th>State</th>
-              <th>Status</th>
               <th>Email</th>
               <th>Phone</th>
+              <th>Status</th>
             </tr>";
       while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
@@ -213,9 +213,9 @@ session_destroy();
         echo "<td>" . htmlspecialchars($row["last_name"]) . "</td>";
         echo "<td>" . htmlspecialchars($row["gender"]) . "</td>";
         echo "<td>" . htmlspecialchars($row["state"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["status"]) . "</td>";
         echo "<td>" . htmlspecialchars($row["email"]) . "</td>";
         echo "<td>" . htmlspecialchars($row["phone"]) . "</td>";
+        echo "<td>" . htmlspecialchars($row["status"]) . "</td>";
         echo "</tr>";
       }
       echo "</table>";
