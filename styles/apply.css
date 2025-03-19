@@ -19,18 +19,16 @@
 }
 /* Form Styling with Scroll */
 .apply_form {
+         /* Enables flex layout */
     padding: 30px;
     border-radius: 8px;
-    max-height: 700px; /* Longer form height */
-    overflow-y: auto; /* Scrollable */
+    max-height: 700px;
+    overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: #26a69a #f5f7fa; /* Teal thumb, light gray track */
-    border: 1px solid #e0e4e8; /* Subtle border */
-    background: linear-gradient(to bottom, #f9fafb, #ffffff); /* Light gradient for depth */
-    text-align: center;
-    justify-content: center;
-    align-self: center;
-    display:flex;
+    scrollbar-color: #26a69a #f5f7fa;
+    border: 1px solid #e0e4e8;
+    background: linear-gradient(to bottom, #f9fafb, #ffffff);
+    flex-direction: column;
 }
 
 /* Custom Scrollbar for Webkit */
