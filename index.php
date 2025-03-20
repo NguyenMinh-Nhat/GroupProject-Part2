@@ -35,7 +35,7 @@ include 'settings.php';
             <a href="https://youtu.be/kQ5BEWV8yno" class="icon_arrow" aria-label="Watch Video">
                 <span class="arrow-text">Discover</span> <span class="arrow-icon">➔</span>
             </a>
-            <a href="enhancement.php" class="enhancement-web">Our Future Awaits</a>
+            <a href="https://www.youtube.com/watch?v=G3k4WkR4WpU" class="enhancement-web">Work at VNG</a>
         </div>
         <img src="styles/images/BANNER-01.png" alt="VNG Games Banner" class="image_banner" loading="lazy" />
         <div class="overlay-gradient"></div>
