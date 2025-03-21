@@ -1,3 +1,15 @@
+<?php
+
+// Start session only if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once('settings.php');
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,3 +124,5 @@
 ?>
 </body>
 </html>
+
+

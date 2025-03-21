@@ -1,50 +1,62 @@
 <?php
+session_start(); // Start session to check username
 require_once "settings.php";
-// Connect to MySQL
-$conn = @mysqli_connect($host,$user,$pwd,$sql_db);
+
+// Connect to database
+$conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
 // Check connection
-
-if ($conn) {
-    echo "<p>Connected to the database.</p>";
-} else {
-    echo "<p>Unable to connect to the database.".mysqli_connect_error() . "</p>" ;
+if (!$conn) {
+    die("<p>Unable to connect to the database: " . mysqli_connect_error() . "</p>");
 }
-// Clean data
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
-    $job_reference  = trim($_POST['job_reference']  );
-    $first_name     = trim($_POST['first_name']  );
-    $last_name      = trim($_POST['last_name'] );
-    $date_of_birth  = trim($_POST['date_of_birth'] );
-    $gender         = trim($_POST['gender'] );
-    $street_address = trim($_POST['street_address'] );
-    $suburb         = trim($_POST['suburb'] );
-    $state          = trim($_POST['state'] );
-    $postcode       = trim($_POST['postcode'] );
-    $email          = trim($_POST['email']);
-    $phone          = trim($_POST['phone']);
-    $other_skills   = trim($_POST['other_skills']  );
-    $status = "New"; // Default value
+// Check if the user is logged in
+if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
+    echo "<p class='wrong'>You must log in first</p>";
+    header("refresh:5;url=phpenhancement.php"); // Redirect after 5 seconds
+    exit();
+}
 
-        // Ensure required fields are not empty
-        if (!$job_reference || !$first_name || !$last_name || !$date_of_birth || !$gender || !$street_address || !$suburb || !$state || !$postcode || !$email || !$phone) {
-            echo "All required fields must be filled.";
-        } else {
-            // Insert data into the database
-            $query = "INSERT INTO eoi (job_reference, first_name, last_name, date_of_birth, gender, street_address, suburb, state, postcode, email, phone, other_skills, status) 
-                    VALUES ('$job_reference', '$first_name', '$last_name', '$date_of_birth', '$gender', '$street_address', '$suburb', '$state', '$postcode', '$email', '$phone', '$other_skills', '$status')";
-            $result = mysqli_query($conn, $query);
-            if (!$result) {
-                echo "<p class='wrong'>Something is wrong with the query: " . htmlspecialchars($query) . "</p>";
-            } else {
-                echo "<p class='ok'>Successfully sent job</p>";
-            }
-            mysqli_close($conn);
-        } 
-    
+// Check if the request is POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Check required fields
+    $required_fields = ['job_reference', 'first_name', 'last_name', 'date_of_birth', 'gender', 'street_address', 'suburb', 'state', 'postcode', 'email', 'phone'];
 
-    // Close connection
-    
-}  
+    foreach ($required_fields as $field) {
+        if (empty($_POST[$field])) {
+            die("<p class='wrong'>All required fields must be filled.</p>");
+        }
+    }
+
+    // Get form data and sanitize input
+    $job_reference  = mysqli_real_escape_string($conn, trim($_POST['job_reference']));
+    $first_name     = mysqli_real_escape_string($conn, trim($_POST['first_name']));
+    $last_name      = mysqli_real_escape_string($conn, trim($_POST['last_name']));
+    $date_of_birth  = mysqli_real_escape_string($conn, trim($_POST['date_of_birth']));
+    $gender         = mysqli_real_escape_string($conn, trim($_POST['gender']));
+    $street_address = mysqli_real_escape_string($conn, trim($_POST['street_address']));
+    $suburb         = mysqli_real_escape_string($conn, trim($_POST['suburb']));
+    $state          = mysqli_real_escape_string($conn, trim($_POST['state']));
+    $postcode       = mysqli_real_escape_string($conn, trim($_POST['postcode']));
+    $email          = mysqli_real_escape_string($conn, trim($_POST['email']));
+    $phone          = mysqli_real_escape_string($conn, trim($_POST['phone']));
+    $other_skills   = isset($_POST['other_skills']) ? mysqli_real_escape_string($conn, trim($_POST['other_skills'])) : "";
+    $status         = "New"; // Default status
+
+    // SQL query to insert data
+    $query = "INSERT INTO eoi (job_reference, first_name, last_name, date_of_birth, gender, street_address, suburb, state, postcode, email, phone, other_skills, status) 
+              VALUES ('$job_reference', '$first_name', '$last_name', '$date_of_birth', '$gender', '$street_address', '$suburb', '$state', '$postcode', '$email', '$phone', '$other_skills', '$status')";
+
+    $result = mysqli_query($conn, $query);
+
+    // Check query result
+    if ($result) {
+        echo "<p class='ok'>Successfully submitted job application</p>";
+    } else {
+        echo "<p class='wrong'>Something went wrong with the query: " . mysqli_error($conn) . "</p>";
+    }
+
+    // Close database connection
+    mysqli_close($conn);
+}
 ?>
