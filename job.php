@@ -7,8 +7,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include 'header.inc'; 
-include 'menu.inc';
 include 'settings.php';
 
 // Connect to the database
@@ -28,11 +26,8 @@ if (!$result) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Jobs and Their Descriptions</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <title>Careers | WE</title>
     <link rel="stylesheet" href="styles/responsive.css">
-    <link rel="stylesheet" href="styles/job.css">
-    <link rel="stylesheet" href="styles/menu.css">
     <link href="styles/footer.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Inline CSS (latest purple-pink neon theme, adjusted for pink dot and Featured badge, plus modal styling) -->
@@ -273,6 +268,8 @@ if (!$result) {
     border-radius: 18px;
     opacity: 0.7;
     animation: glowBorder 2s infinite alternate;
+    text-align: center;
+    align-items: center;
 }
 
 .modal-content h2 {
@@ -330,9 +327,35 @@ if (!$result) {
         transform: scale(1);
     }
 }
+
+.modal-content a {
+            display: inline-block;
+            background:linear-gradient(90deg, #ff6200, #ff8c00); /* Gradient orange button */
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 30px;
+            border-radius: 5px;
+            border: none;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease, transform 0.3s ease;
+            place-self: center;
+            margin-top: 20px;
+        }
+
+        /* Hover effect */
+        .modal-content a:hover {
+            background: #e04c2d; /* Darker orange */
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
+    <?php include 'menu.inc'; ?>
     <div class="jobs-container">
         <div class="jobs-header">
             <h1>Careers at VNG</h1>
@@ -361,6 +384,7 @@ if (!$result) {
                     echo "<p><strong>Essential Requirements:</strong> " . htmlspecialchars($row['essential_requirements']) . "</p>";
                     echo "<p><strong>Preferred Skills:</strong> " . htmlspecialchars($row['preferred_skills']) . "</p>";
                     echo "<p><strong>Average Salary:</strong> $" . htmlspecialchars($row['average_salary']) . "K</p>";
+                    echo "<a href='apply.php?job_id={$job_id}'>Apply Now</a>";
                     echo "</div>";
                     echo "</div>";
                 }

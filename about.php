@@ -1,14 +1,9 @@
 <?php
-    include 'header.inc'; 
     include 'menu.inc';
     include 'settings.php';
     
-    ob_start();
 
-        // Start session at the very top
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-}
+
 ?>
 
 
@@ -17,9 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - We Are One</title>
+    <title>About US | WE</title>
 
-    <link rel="stylesheet" href="styles/menu.css">
     <link rel="stylesheet" href="styles/footer.css">
     <style>
         * {
