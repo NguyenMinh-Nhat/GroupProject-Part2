@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(145deg, #d3d3d3, #686869); /* Dark gradient background */
+    background: linear-gradient(145deg, #ffffff, #686869); /* Dark gradient background */
     min-height: 100vh;
     display: flex;
     justify-content: center;

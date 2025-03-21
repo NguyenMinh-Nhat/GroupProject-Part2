@@ -1,23 +1,40 @@
+<?php
+
+// Start session only if not already started
+
+    session_start();
+
+
+require_once('settings.php');
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles/styles.css" rel="stylesheet">
-    <link href = "styles/responsive.css" rel = "stylesheet" >
-    <title>Apply Position</title>
+    <title>Apply | WE</title>
     <link href="styles/apply.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/menu.css">
     <link href = "styles/footer.css" rel = "stylesheet" />
 </head>
 
 <body>
 <?php 
-    include 'header.inc'; 
     include 'menu.inc';
 ?>
 <div class = "form-container">
-
+<?php
+    if (isset($_SESSION['error'])) {
+        echo "<p style='color: red; text-align: center;'>" . $_SESSION['error'] . "</p>";
+        unset($_SESSION['error']);
+    }
+    if (isset($_SESSION['success'])) {
+        echo "<p style='color: green; text-align: center;'>" . $_SESSION['success'] . "</p>";
+        unset($_SESSION['success']);
+    }
+    ?>
     <form action="process_eoi.php" method="POST" class="apply_form" novalidate>
         <h2>Registration Form</h2>
         <div>
@@ -112,3 +129,5 @@
 ?>
 </body>
 </html>
+
+

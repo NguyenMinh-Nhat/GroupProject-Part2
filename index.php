@@ -19,10 +19,9 @@ include 'settings.php';
     <meta name="description" content="Welcome to VNG Corporation - Innovating the Future">
     <meta name="keywords" content="VNG, technology, innovation, gaming">
     <meta name="author" content="VNG Corporation">
-    <title>Homepage | VNG Corporation</title>
+    <title>Homepage | WE</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/responsive.css">
-    <link rel="stylesheet" href="styles/menu.css">
     <link rel="stylesheet" href="styles/footer.css">
     <script src="scripts/main.js" defer></script>
 
@@ -35,7 +34,7 @@ include 'settings.php';
             <a href="https://youtu.be/kQ5BEWV8yno" class="icon_arrow" aria-label="Watch Video">
                 <span class="arrow-text">Discover</span> <span class="arrow-icon">➔</span>
             </a>
-            <a href="enhancement.php" class="enhancement-web">Our Future Awaits</a>
+            <a href="phpenhancement3.php" class="enhancement-web">Work at VNG</a>
         </div>
         <img src="styles/images/BANNER-01.png" alt="VNG Games Banner" class="image_banner" loading="lazy" />
         <div class="overlay-gradient"></div>
