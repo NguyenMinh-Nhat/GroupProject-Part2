@@ -28,7 +28,7 @@
     height:1300px;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: #26a69a #f5f7fa;
+    scrollbar-color: #a65926 #f5f7fa;
     border: 1px solid #e0e4e8;
     background: linear-gradient(to bottom, #f9fafb, #ffffff);
     flex-direction: column;
@@ -43,7 +43,7 @@
     border-radius: 8px;
 }
 .apply_form::-webkit-scrollbar-thumb {
-    background: #26a69a; /* Teal */
+    background: #a65926; /* Teal */
     border-radius: 8px;
     transition: background 0.3s ease;
 }

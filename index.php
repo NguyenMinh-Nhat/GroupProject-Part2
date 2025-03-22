@@ -21,7 +21,6 @@ include 'settings.php';
     <meta name="author" content="VNG Corporation">
     <title>Homepage | WE</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles/responsive.css">
     <link rel="stylesheet" href="styles/footer.css">
     <script src="scripts/main.js" defer></script>
 
