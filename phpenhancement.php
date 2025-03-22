@@ -9,7 +9,6 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - VNG Games</title>
     <link rel="stylesheet" href="styles/login.css">
-    <link rel="stylesheet" href="styles/responsive.css">
     <link href="styles/footer.css" rel="stylesheet" />
 </head>
 <body>

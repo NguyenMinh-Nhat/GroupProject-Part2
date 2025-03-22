@@ -43,13 +43,14 @@ if (isset($_GET['logout'])) {
         }
 
         /* Logo styles with pulse and hover animation */
-        header .logo {
+        header .logo a {
             font-size: 24px;
             font-weight: 600;
             color: #ff5733;
+            text-decoration: none;
         }
 
-        header .logo:hover {
+        header .logo a:hover {
             transform: rotate(360deg);
             text-shadow: 0 0 10px rgba(255, 87, 51, 0.7);
         }
@@ -258,7 +259,7 @@ if (isset($_GET['logout'])) {
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">VNG</div>
+        <div class="logo"><a href = "index.php">VNG<a></div>
         <div class="welcome">
             <?php
                 // Check if username exists in session

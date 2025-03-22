@@ -27,7 +27,6 @@ if (!$result) {
 <html lang="en">
 <head>
     <title>Careers | WE</title>
-    <link rel="stylesheet" href="styles/responsive.css">
     <link href="styles/footer.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Inline CSS (latest purple-pink neon theme, adjusted for pink dot and Featured badge, plus modal styling) -->
@@ -351,6 +350,12 @@ if (!$result) {
         .modal-content a:hover {
             background: #e04c2d; /* Darker orange */
             transform: scale(1.05);
+        }
+        body {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
         }
     </style>
 </head>
