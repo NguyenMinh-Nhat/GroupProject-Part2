@@ -4,67 +4,68 @@ session_start();
 
 // Step 2: Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    echo "Bạn cần đăng nhập. <a href='login.php'>Đăng nhập</a>";
+    echo "You must login first. <a href='phpenhancement.php'>Đăng nhập</a>";
     exit();
 }
 
-// Step 3: Get the user ID from the session
+//  Get the user ID from the session
 $userId = $_SESSION['user_id'];
 
-// Step 4: Load the database settings
+//  Load the database settings
 require_once("settings.php");
 
-// Step 5: Connect to the database
+//  Connect to the database
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
-// Step 6: If the connection fails, show an error
+//  If the connection fails, show an error
 if (!$conn) {
-    echo "Không kết nối được với database.";
+    echo "Cannot connect to database.";
     exit();
 }
 
-// Step 7: Create queries to get data for the user
+//  Create queries to get data for the user
 $query = "SELECT job_reference, first_name, last_name, date_of_birth, gender, email, status, evaluation FROM eoi WHERE user_id = $userId";
 $eoinum_query = "SELECT eoinum FROM eoi WHERE user_id = $userId";
 
-// Step 8: Run the queries
+//  Run the queries
 $result = mysqli_query($conn, $query);
 $eoinum_result = mysqli_query($conn, $eoinum_query);
 
-// Step 9: If the main query fails, show an error
+//  If the main query fails, show an error
 if (!$result) {
-    echo "Có lỗi khi lấy dữ liệu: " . mysqli_error($conn);
+    echo "Something is wrong with query: " . mysqli_error($conn);
     exit();
 }
 
-// Step 10: If no data is found for the main query, show a message
+//  If no data is found for the main query, show a message
 if (mysqli_num_rows($result) == 0) {
-    echo "Không tìm thấy User ID: $userId";
+    echo "Cannot find User Application Form: $userId";
     exit();
 }
 
-// Step 11: If the eoinum query fails, show an error
+// : If the eoinum query fails, show an error
 if (!$eoinum_result) {
-    echo "Có lỗi khi lấy dữ liệu: " . mysqli_error($conn);
+    echo "Something is wrong with user id: " . mysqli_error($conn);
     exit();
 }
 
-// Step 12: If no data is found for the eoinum query, show a message
+//  If no data is found for the eoinum query, show a message
 if (mysqli_num_rows($eoinum_result) == 0) {
-    echo "Không tìm thấy User ID: $userId";
+    echo "Cannot find User Application Form: $userId";
     exit();
 }
 
-// Step 13: Fetch the eoinum value
+// Fetch the eoinum value
 $row = mysqli_fetch_assoc($eoinum_result);
 $eoinum = $row['eoinum'];
 
-// Step 14: Fetch the user data
+//  Fetch the user data
 $user_data = mysqli_fetch_assoc($result);
 
-// Step 15: Define labels for the fields (to make them more user-friendly)
+//Define labels for the fields (to make them more user-friendly)
 $labels = [
     'job_reference' => 'Job Reference',
+    'job_title' => 'Job Title',
     'first_name' => 'First Name',
     'last_name' => 'Last Name',
     'date_of_birth' => 'Date of Birth',
@@ -80,7 +81,7 @@ $labels = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Application Form</title>
+    <title>Form Application | WE</title>
     <link href="styles/footer.css" rel="stylesheet">
     <style>
         body {
