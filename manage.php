@@ -12,8 +12,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Debug session data
-
 // Include settings.php to define database credentials
 require_once('settings.php');
 
@@ -38,6 +36,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_status'])) {
         echo "<p class='success'>Status updated successfully!</p>";
     } else {
         echo "<p class='error'>Error updating status: " . mysqli_error($conn) . "</p>";
+    }
+}
+
+// Handle delete records
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_form'])) {
+    if (isset($_POST['eoinum'])) {
+        $eoinum = filter_input(INPUT_POST, 'eoinum', FILTER_VALIDATE_INT);
+        if ($eoinum !== false) {
+            // Delete the record from the database
+            $delete_sql = "DELETE FROM eoi WHERE eoinum = $eoinum";
+            if (mysqli_query($conn, $delete_sql)) {
+                if (mysqli_affected_rows($conn) > 0) {
+                    echo "<p class='success'>Record deleted successfully!</p>";
+                    // Optionally, redirect to refresh the page and update the table
+                    header("Location: manage.php");
+                    exit();
+                } else {
+                    echo "<p class='error'>No record found with EOI Number $eoinum.</p>";
+                }
+            } else {
+                echo "<p class='error'>Error deleting record: " . mysqli_error($conn) . "</p>";
+            }
+        } else {
+            echo "<p class='error'>Invalid EOI Number.</p>";
+        }
+    } else {
+        echo "<p class='error'>EOI Number not provided for deletion.</p>";
     }
 }
 
@@ -88,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_evaluation'])) {
         }
 
         body {
-            background: linear-gradient(180deg, #f5e6e6 0%, #ffffff 100%);
+            background: linear-gradient(180deg, #fff5e6 0%, #ffffff 100%); /* Updated to orange-white gradient */
             min-height: 100vh;
             transition: opacity 0.3s ease;
         }
@@ -264,8 +289,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_evaluation'])) {
             border-radius: 10px;
             width: 90%;
             max-width: 600px;
-            max-height: 80vh; /* Giới hạn chiều cao tối đa của modal */
-            overflow-y: auto; /* Thêm scrollbar dọc khi nội dung vượt quá chiều cao */
+            max-height: 80vh;
+            overflow-y: auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transform: scale(0.8);
             opacity: 0;
@@ -279,21 +304,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_evaluation'])) {
 
         /* Tùy chỉnh giao diện scrollbar */
         .modal-content::-webkit-scrollbar {
-            width: 8px; /* Chiều rộng của scrollbar */
+            width: 8px;
         }
 
         .modal-content::-webkit-scrollbar-track {
-            background: #f1f1f1; /* Màu nền của track */
+            background: #f1f1f1;
             border-radius: 10px;
         }
 
         .modal-content::-webkit-scrollbar-thumb {
-            background: #ff5733; /* Màu của thumb (phần kéo) */
+            background: #ff5733;
             border-radius: 10px;
         }
 
         .modal-content::-webkit-scrollbar-thumb:hover {
-            background: #e04e2d; /* Màu khi hover */
+            background: #e04e2d;
         }
 
         .modal-content h2 {
@@ -347,20 +372,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_evaluation'])) {
             cursor: not-allowed;
         }
 
-        .modal-content input[type="submit"] {
+        .modal-content input[type="submit"],
+        .modal-content button {
             display: inline-block;
-            background: #ff5733;
-            color: #fff;
-            text-transform: uppercase;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
             font-size: 14px;
             font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-            transition: background 0.3s ease, transform 0.3s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 5px;
+        }
+
+        .modal-content input[type="submit"] {
+            background: #ff5733;
+            color: #fff;
         }
 
         .modal-content input[type="submit"]:hover {
@@ -368,8 +396,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_evaluation'])) {
             transform: scale(1.05);
         }
 
+        .modal-content button.delete-btn {
+            background-color: #ff5733;
+            color: #fff;
+        }
+
+        .modal-content button.delete-btn:hover {
+            background-color: #e04e2d;
+            transform: scale(1.05);
+        }
+
         /* Ripple effect on click */
-        .modal-content input[type="submit"] .ripple {
+        .modal-content input[type="submit"] .ripple,
+        .modal-content button .ripple {
             position: absolute;
             background: rgba(255, 255, 255, 0.3);
             border-radius: 50%;
@@ -391,7 +430,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_evaluation'])) {
         }
 
         /* Sparkle effect on click */
-        .modal-content input[type="submit"] .sparkle {
+        .modal-content input[type="submit"] .sparkle,
+        .modal-content button .sparkle {
             position: absolute;
             width: 6px;
             height: 6px;
@@ -413,7 +453,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_evaluation'])) {
         }
 
         /* Shake effect on click */
-        .modal-content input[type="submit"].clicked {
+        .modal-content input[type="submit"].clicked,
+        .modal-content button.clicked {
             animation: shake 0.3s ease;
         }
 
@@ -529,11 +570,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_evaluation'])) {
             $sql = "SELECT * FROM eoi WHERE 1=1";
             $conditions = [];
 
-            if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['update_status']) && !isset($_POST['save_evaluation'])) {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['update_status']) && !isset($_POST['save_evaluation']) && !isset($_POST['delete_form'])) {
                 if (!empty($_POST["eoinum"])) {
                     $eoinum = filter_input(INPUT_POST, "eoinum", FILTER_VALIDATE_INT);
                     if ($eoinum !== false) {
-                        $conditions[] = "eoinum = $eoinum"; // No quotes for integer
+                        $conditions[] = "eoinum = $eoinum";
                     } else {
                         echo "<p class='error'>Invalid EOI Number.</p>";
                     }
@@ -595,7 +636,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_evaluation'])) {
                             <th>Details</th>
                           </tr>";
                     while ($row = mysqli_fetch_assoc($result)) {
-                        // Encode JSON and escape special characters for HTML attribute
                         $row_json = htmlspecialchars(json_encode($row, JSON_HEX_APOS | JSON_HEX_QUOT), ENT_QUOTES, 'UTF-8');
                         echo "<tr>";
                         echo "<td>" . htmlspecialchars($row["eoinum"]) . "</td>";
@@ -641,7 +681,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_evaluation'])) {
 
     <!-- Modal for Applicant Details -->
     <div id="detailsModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" id="modal-content">
             <span class="close" onclick="closeModal()">×</span>
             <h2>Applicant Details</h2>
             <form id="detailsForm" method="POST" action="manage.php">
@@ -686,6 +726,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_evaluation'])) {
                     <textarea name="evaluation" id="modal_evaluation" placeholder="Enter evaluation for this applicant"></textarea>
                 </div>
                 <input type="submit" name="save_evaluation" value="Save Evaluation">
+                <!-- Delete button with both client-side and server-side functionality -->
+                <button type="submit" name="delete_form" class="delete-btn">Delete</button>
             </form>
         </div>
     </div>
