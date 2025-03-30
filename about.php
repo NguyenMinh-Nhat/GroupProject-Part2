@@ -303,6 +303,34 @@
                 padding: 12px 30px;
                 font-size: 16px;
             }
+            /* Benefits List Styling */
+.benefits-list {
+    list-style: none;
+    margin: 25px 0;
+    padding-left: 0;
+}
+
+.benefits-list li {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #ff6200;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefits-list li:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.benefits-list li strong {
+    color: #ff6200;
+    font-weight: 600;
+}
         }
     </style>
 </head>
@@ -426,13 +454,56 @@
         <a href="mailto:105680164@student.swin.edu.au" class="btn">Email Us</a>
     </section>
 
-    <section class="about-section">
+<!-- Existing "More About Us" Section -->
+<section class="about-section">
         <h2>More About Us</h2>
         <h3>Programming Skills</h3>
         <p>Our team is skilled in HTML and CSS.</p>
         <h3>Geographic Context</h3>
         <p>We come from diverse communities in Ho Chi Minh City and globally, each contributing a unique perspective to the project.</p>
     </section>
+
+    <!-- Expanded "Our Mission and Benefits" Section -->
+    <section class="about-section">
+        <h2>Our Mission and Benefits</h2>
+        <h3>Our Mission</h3>
+        <p>We Are One - Swinburne University is more than just a student group; it’s a collective of ambitious, tech-savvy individuals united by a shared vision to innovate and excel in the world of programming and development. Under the guidance of our dedicated tutor, Mr. Trung Nguyen, we strive to harness our diverse skill sets—ranging from Python and Java to React and AI—to create projects that reflect technical mastery and real-world relevance. Our mission is to cultivate a collaborative environment where students from Ho Chi Minh City, Sri Lanka, and beyond can merge their unique backgrounds and talents into something extraordinary. Whether it’s coding a sleek website, brainstorming solutions during our Friday 2:00 PM - 4:00 PM sessions, or pushing the boundaries of artificial intelligence in our Sunday development meetings, we aim to inspire each other, elevate our craft, and contribute meaningful solutions to both our university community and the global tech ecosystem. We Are One is about building bridges—between ideas, cultures, and technologies—and leaving a legacy of innovation at Swinburne University.</p>
+        
+        <h3>Benefits of Joining Us</h3>
+        <p>Joining We Are One - Swinburne University is an opportunity to step into a dynamic, supportive, and forward-thinking team. Here’s a deeper look at what you’ll gain by becoming part of our group:</p>
+        <ul class="benefits-list">
+            <li>
+                <strong>Diverse Skill Enhancement:</strong> Dive into a rich learning experience with a team proficient in Python, Java, HTML, CSS, C++, JavaScript, SQL, React, Node.js, and AI. Whether you’re a beginner looking to master the basics or an experienced coder eager to refine your expertise, our Wednesday 10:00 AM - 12:00 PM group meetings offer a space to grow alongside peers who bring years of collective experience to the table.
+            </li>
+            <li>
+                <strong>Global Networking:</strong> Connect with a multicultural team hailing from Bao Loc, Ho Chi Minh City, and Sri Lanka. Our members—Nguyen Minh Nhat, Dinh Hoang Phuc, Cung Duy Cuong, Pahan Pathirathna, and Minh Truong—each offer unique insights and professional networks, opening doors to friendships and collaborations that span continents and industries.
+            </li>
+            <li>
+                <strong>Creative Project Opportunities:</strong> Participate in hands-on projects that let your imagination soar. From designing interactive websites with HTML and CSS to exploring AI-driven applications or coding robust systems in C++, our brainstorming and development sessions (Fridays 2:00 PM - 4:00 PM and Sundays 6:00 PM - 8:00 PM) are your playground to innovate and experiment.
+            </li>
+            <li>
+                <strong>Supportive Learning Community:</strong> Join a group that thrives on teamwork and encouragement. With members boasting 1 to 4 years of work experience and a passion for coding, gaming, music, sports, and more, you’ll find mentors and peers ready to share knowledge and tackle challenges together, guided by Mr. Trung Nguyen’s expertise.
+            </li>
+            <li>
+                <strong>Impactful Contributions:</strong> Work on projects that resonate beyond the classroom. Whether it’s building tools for Swinburne University or creating solutions inspired by our diverse hometowns, your efforts with We Are One will have a tangible impact, showcasing your skills to potential employers and the wider tech community.
+            </li>
+            <li>
+                <strong>Personalized Mentorship:</strong> Benefit from the wisdom of our tutor, Mr. Trung Nguyen, and senior members like Minh Truong (with 4 years of experience) and Cung Duy Cuong (with 3 years). Their guidance ensures you’re not just learning but excelling in areas like AI, SQL, and web development.
+            </li>
+            <li>
+                <strong>Structured Yet Flexible Engagement:</strong> Fit growth into your schedule with our well-planned timetable—group meetings on Wednesdays, brainstorming on Fridays, and development on Sundays. Whether you’re 19 like Nhat, Phuc, and Cuong, or 25 like Pahan and Minh, there’s a place for you to contribute and shine at your own pace.
+            </li>
+        </ul>
+        <p>Ready to join a team where diversity fuels creativity, and collaboration drives success? We Are One - Swinburne University is your chance to grow, connect, and make a difference. Take the first step today!</p>
+        <a href="apply.php" class="btn">Join Us Now</a>
+    </section>
+
+</main>
+<?php   
+    include 'footer.inc';
+?>
+</body>
+</html>
 </main>
 <?php   
     include 'footer.inc';
