@@ -1,200 +1,223 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Modern font */
+}
+
+/* Body Styling */
+body {
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* Subtle gradient background */
+    color: #2c3e50;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 /* Form Container */
 .form-container {
-    max-width: 1000px; /* Slightly wider for a professional layout */
-    margin: 50px auto; /* Increased margin for prominence */
-    padding: 30px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Softer, professional shadow */
-    border-radius: 12px;
-    background: #ffffff; /* Clean white base */
-    position: relative;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease; /* Subtle hover effect */
-    max-height: 1300px;
-    height: 100%;
-}
-.form-container:hover {
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideUp 0.8s ease-out;
 }
 
-#job_reference, #first_name, #last_name, #date_of_birth, #gender, #street_address, #suburb, #postcode, #email {
-    width: 80%;
-}
-/* Form Styling with Scroll */
-.apply_form {
-         /* Enables flex layout */
-    padding: 30px;
-    border-radius: 8px;
-    max-height: 80%;
-    height:1300px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #a65926 #f5f7fa;
-    border: 1px solid #e0e4e8;
-    background: linear-gradient(to bottom, #f9fafb, #ffffff);
-    flex-direction: column;
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Custom Scrollbar for Webkit */
-.apply_form::-webkit-scrollbar {
-    width: 8px;
-}
-.apply_form::-webkit-scrollbar-track {
-    background: #f5f7fa; /* Light gray */
-    border-radius: 8px;
-}
-.apply_form::-webkit-scrollbar-thumb {
-    background: #a65926; /* Teal */
-    border-radius: 8px;
-    transition: background 0.3s ease;
-}
-.apply_form::-webkit-scrollbar-thumb:hover {
-    background: #208c82; /* Darker teal */
-}
-
-/* Form Header */
+/* Form Heading */
 .apply_form h2 {
-    color: #8e24aa; /* Purple */
-    font-size: 2rem;
-    font-weight: 600;
     text-align: center;
-    margin-bottom: 30px;
-    font-family: 'Arial', sans-serif; /* Clean, professional font */
-    letter-spacing: 0.5px;
+    font-size: 36px;
+    font-weight: 700;
+    color: #e67e22; /* Vibrant orange */
+    margin-bottom: 40px;
     text-transform: uppercase;
-    background: linear-gradient(to right, #8e24aa, #26a69a); /* Gradient text */
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent; /* Gradient effect */
+    letter-spacing: 3px;
+    position: relative;
+}
+
+.apply_form h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #e67e22;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+.apply_form h2:hover::after {
+    width: 120px;
 }
 
 /* Form Fields */
 .apply_form div {
-    margin-bottom: 25px;
-    position: relative;
-    transition: transform 0.2s ease;
-}
-.apply_form div:hover {
-    transform: translateY(-2px); /* Subtle lift for professionalism */
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* Labels */
 .apply_form label {
-    display: block;
-    color: #333; /* Darker for readability */
-    font-weight: 500;
-    margin-bottom: 8px;
-    font-size: 0.95rem;
-    font-family: 'Arial', sans-serif;
-    letter-spacing: 0.2px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
     transition: color 0.3s ease;
 }
-.apply_form input:focus + label,
-.apply_form select:focus + label,
-.apply_form textarea:focus + label {
-    color: #26a69a; /* Teal on focus */
+
+.apply_form label:hover {
+    color: #e67e22;
 }
 
-/* Inputs, Selects, and Textarea */
 .apply_form input,
 .apply_form select,
 .apply_form textarea {
-    max-width: 80%;
-    padding: 12px 15px;
-    border: 1px solid #d1d9e0; /* Clean border */
-    border-radius: 6px;
-    font-size: 1rem;
-    color: #333;
-    background-color: #ffffff;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle inset shadow */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 16px;
+    color: #34495e;
+    background: #ecf0f1;
+    border: none;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
+
 .apply_form input:focus,
 .apply_form select:focus,
 .apply_form textarea:focus {
-    border-color: #8e24aa; /* Purple on focus */
-    box-shadow: 0 0 8px rgba(142, 36, 170, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Professional glow */
-    transform: scale(1.01); /* Slight scale for feedback */
+    background: #fff;
+    box-shadow: 0 0 10px rgba(230, 126, 34, 0.4);
     outline: none;
+    border: 2px solid #e67e22;
 }
+
+.apply_form input[type="date"] {
+    padding: 12px 18px;
+}
+
+/* Placeholder Styling */
+.apply_form input::placeholder,
+.apply_form textarea::placeholder {
+    color: #95a5a6;
+    font-style: italic;
+}
+
+/* Select Dropdown */
 .apply_form select {
     appearance: none;
-    background: url('data:image/svg+xml;utf8,<svg fill="%2326a69a" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 15px center;
-    padding-right: 35px; /* Space for arrow */
+    background: #ecf0f1 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="%23e67e22" d="M7 10l5 5 5-5z"/></svg>') no-repeat right 18px center;
+    padding-right: 45px;
 }
-.apply_form textarea {
+
+/* Textarea */
+.Message-div textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 140px;
+    border-radius: 12px;
 }
 
-/* Specific Width Adjustments */
-#DateOfBirth {
-    width: 200px;
-}
-#PhoneNumber {
-    width: 250px;
-}
-#State, #Gender {
-    width: 200px;
-}
-
-/* Button */
-.apply_form button {
-    background: linear-gradient(to right, #26a69a, #348cf7); /* Gradient for professionalism */
-    color: white;
-    padding: 14px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
+/* Submit Button */
+.apply_form button[type="submit"] {
+    display: block;
     width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(177, 255, 247, 0.3); /* Teal shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(230, 126, 34, 0.4);
 }
-.apply_form button:hover {
-    transform: translateY(-3px); /* Lift effect */
-    box-shadow: 0 6px 20px rgba(142, 36, 170, 0.4); /* Stronger purple shadow */
+
+.apply_form button[type="submit"]:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, #d35400, #e67e22);
+    box-shadow: 0 12px 30px rgba(230, 126, 34, 0.6);
 }
-.apply_form button:active {
+
+.apply_form button[type="submit"]:active {
     transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(142, 36, 170, 0.3);
+    box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
 }
-/* Form Container */
 
-
-
-
-/* Vibrant Input Fields */
-.apply_form input,
-.apply_form select,
-.apply_form textarea {
-    max-width: 80%;
-    padding: 12px 15px;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    font-size: 1rem;
+/* Error and Success Messages */
+.form-container p {
+    font-size: 16px;
     font-weight: 500;
-    color: #333;
-    background-color: #ffffff;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    outline: none;
-}
-.apply_form input:focus,
-.apply_form select:focus,
-.apply_form textarea:focus {
-    border-color: #8e24aa;
-    box-shadow: 0 0 10px rgba(142, 36, 170, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    transform: scale(1.02);
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    text-align: center;
 }
 
-/* Gradient Border Effect */
-.apply_form input,
-.apply_form select,
-.apply_form textarea {
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(45deg, #bbe7f7, #b0bbba) border-box;
-    border: 2px solid transparent;
+.form-container p[style*="color: red"] {
+    background: #fce4e4;
+    border-left: 5px solid #e74c3c;
+    color: #e74c3c;
+}
+
+.form-container p[style*="color: green"] {
+    background: #e8f5e9;
+    border-left: 5px solid #2ecc71;
+    color: #2ecc71;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        margin: 40px 20px;
+        padding: 30px;
+    }
+
+    .apply_form h2 {
+        font-size: 30px;
+    }
+
+    .apply_form label {
+        font-size: 15px;
+    }
+
+    .apply_form input,
+    .apply_form select,
+    .apply_form textarea {
+        font-size: 15px;
+        padding: 12px 15px;
+    }
+
+    .apply_form button[type="submit"] {
+        font-size: 16px;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+
+    .apply_form h2 {
+        font-size: 26px;
+    }
+
+    .apply_form div {
+        margin-bottom: 20px;
+    }
 }
